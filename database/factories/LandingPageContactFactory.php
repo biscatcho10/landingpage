@@ -19,10 +19,10 @@ class LandingPageContactFactory extends Factory
         if ($x == "action") {
             $data = [
                 'name' => $this->faker->name(),
-                'company_name' => $this->faker->company(),
+                'nationality' => $this->faker->randomElement(["Egyptian", "Emirati", "Saudi Arabian", "American", "British", "English"]),
                 'phone_number' => $this->faker->phoneNumber(),
                 'email' => $this->faker->email(),
-                'message' => $this->faker->paragraph(),
+                'profession' => $this->faker->jobTitle(),
                 'type' => $x,
                 'industry_id' => Industry::all()->random()->id,
                 'from_where_id' => FromWhereList::all()->random()->id,
@@ -30,10 +30,10 @@ class LandingPageContactFactory extends Factory
         } else {
             $data = [
                 'name' => $this->faker->name(),
-                'company_name' => $this->faker->company(),
+                'nationality' => $this->faker->randomElement(["Egyptian", "Emirati", "Saudi Arabian", "American", "British", "English"]),
                 'phone_number' => $this->faker->phoneNumber(),
                 'email' => $this->faker->email(),
-                'message' => $this->faker->paragraph(),
+                'profession' => $this->faker->jobTitle(),
                 'type' => $x,
             ];
         }

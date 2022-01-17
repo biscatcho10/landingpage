@@ -32,13 +32,13 @@ class LandingContactController extends Controller
         return view('landing pages.not-found');
     }
 
-    public function thanks(): JsonResponse
-    {
-        $thanks = LandingPageData::where("type", "action")->first(["thanks_title", "thanks_paragraph"]);
-        return response()->json(
-            $thanks
-        );
-    }
+    // public function thanks(): JsonResponse
+    // {
+    //     $thanks = LandingPageData::where("type", "action")->first(["thanks_title", "thanks_paragraph"]);
+    //     return response()->json(
+    //         $thanks
+    //     );
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -46,35 +46,35 @@ class LandingContactController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function send(Request $request)
-    {
-        $inputs = $request->only(["name", "email", "phone_number", "how_can_help_you", "type"]);
-        $inputs['how_can_help_you'] = json_decode($inputs['how_can_help_you']);
-        $how_can_help_you = [];
-        if (!empty($inputs['how_can_help_you'])) {
-            foreach ($inputs['how_can_help_you'] as $el) {
-                $how_can_help_you[] = $el->value;
-            }
-            $inputs['how_can_help_you'] = $how_can_help_you;
-        }
-        $landing = new LandingPageContact;
-        $landing->name = $inputs['name'];
-        $landing->phone_number = $inputs['phone_number'];
-        $landing->email = $inputs['email'];
-        $landing->from_where_id = $inputs['how_can_help_you'];
-        $landing->type = $inputs['type'];
-        $landing->save();
-        $landing = LandingPageData::where("type", $inputs['type'])->first();
-        if ($landing) {
-            $details = [
-                'to' => $inputs['email'],
-                'subject' => $landing->email_subject,
-                'template' => $landing->email_template,
-            ];
-            composeEmail($details['to'], $details['subject'], $details['template']);
-        }
-        return response()->json(["success" => true]);
-    }
+    // public function send(Request $request)
+    // {
+    //     $inputs = $request->only(["name", "email", "phone_number", "how_can_help_you", "type"]);
+    //     $inputs['how_can_help_you'] = json_decode($inputs['how_can_help_you']);
+    //     $how_can_help_you = [];
+    //     if (!empty($inputs['how_can_help_you'])) {
+    //         foreach ($inputs['how_can_help_you'] as $el) {
+    //             $how_can_help_you[] = $el->value;
+    //         }
+    //         $inputs['how_can_help_you'] = $how_can_help_you;
+    //     }
+    //     $landing = new LandingPageContact;
+    //     $landing->name = $inputs['name'];
+    //     $landing->phone_number = $inputs['phone_number'];
+    //     $landing->email = $inputs['email'];
+    //     $landing->from_where_id = $inputs['how_can_help_you'];
+    //     $landing->type = $inputs['type'];
+    //     $landing->save();
+    //     $landing = LandingPageData::where("type", $inputs['type'])->first();
+    //     if ($landing) {
+    //         $details = [
+    //             'to' => $inputs['email'],
+    //             'subject' => $landing->email_subject,
+    //             'template' => $landing->email_template,
+    //         ];
+    //         composeEmail($details['to'], $details['subject'], $details['template']);
+    //     }
+    //     return response()->json(["success" => true]);
+    // }
 
 
     public function save(Request $request)
@@ -83,6 +83,8 @@ class LandingContactController extends Controller
             "name" => "required",
             "email" => "required|email",
             "phone_number" => "required",
+            "nationality" => "required",
+            "profession" => "required",
             "from_where" => "required|exists:from_where_list,name"
         ]);
         if ($validator->fails()) {
@@ -96,6 +98,8 @@ class LandingContactController extends Controller
         $landing->name = $request->name;
         $landing->phone_number = $tel;
         $landing->email = $request->email;
+        $landing->nationality = $request->nationality;
+        $landing->profession = $request->profession;
         $landing->from_where_id = $from_where;
         $landing->type = $request->type;
         $landing->save();

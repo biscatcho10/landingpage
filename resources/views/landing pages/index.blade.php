@@ -79,7 +79,7 @@
                                 <span></span>
                                 Nationality
                             </label>
-                            <input type="text" placeholder="please write Your Nationality">
+                            <input type="text" name="nationality" value="{{ old('nationality') }}" placeholder="please write Your Nationality">
                         </div>
                         <!-- start input -->
                         <div class="par_input">
@@ -111,7 +111,7 @@
                                 <span></span>
                                 Profession
                             </label>
-                            <input type="text" placeholder="please write Your profession">
+                            <input type="text" name="profession" value="{{ old('profession') }}" placeholder="please write Your profession">
                         </div>
                         <!-- start input -->
                         <div class="par_input">

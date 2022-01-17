@@ -16,14 +16,14 @@ class CreateLandingPageContactsTable extends Migration
         Schema::create('landing_page_contacts', function (Blueprint $table) {
             $table->id();
             $table->string("name", 191);
-            $table->string("company_name", 191)->nullable();
+            $table->string("nationality", 191)->nullable();
             $table->string("email", 191);
             $table->string("phone_number", 191)->nullable();
             $table->longText("industry_id")->nullable();
             $table->longText("from_where_id")->nullable();
 //            $table->unsignedBigInteger("industry_id")->nullable();
 //            $table->unsignedBigInteger("from_where_id")->nullable();
-            $table->text("message")->nullable();
+            $table->text("profession")->nullable();
             $table->string("type", 100);
 //            $table->foreign("industry_id")->references("id")->on("industries")->onDelete("no action")->onUpdate("no action");
 //            $table->foreign("from_where_id")->references("id")->on("from_where_list")->onDelete("no action")->onUpdate("no action");
