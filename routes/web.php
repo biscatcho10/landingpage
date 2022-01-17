@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 });
 
 
-Route::get('landing-page/{type}', 'Frontend\LandingContactController@index');
+Route::get('{type}', 'Frontend\LandingContactController@index');
 Route::post('landing-page', 'Frontend\LandingContactController@save')->name('save.land');
 Route::get('thank/{type}', 'Frontend\LandingContactController@thank')->name('thank');
 

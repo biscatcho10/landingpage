@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{{ $landingData->facebook_pixel }}
+{!! $landingData->facebook_pixel !!}
 
 <head>
-    {{ $landingData->google_analytics }}
-    {{ $landingData->google_tag_manager_head }}
+    {!! $landingData->google_analytics !!}
+    {!! $landingData->google_tag_manager_head !!}
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +34,7 @@
 
 
 <body>
-    {{ $landingData->google_tag_manager_body }}
+    {!! $landingData->google_tag_manager_body !!}
 
     <!-- start section contact  -->
     <section id="contact">
@@ -63,7 +63,24 @@
                                 <span class="active"></span>
                                 Exhibition
                             </label>
-                            <input type="text" placeholder="" value="NPE Ex Riyadh 2022">
+
+                            @switch($type)
+                                @case("Doha")
+                                    <input type="text" placeholder="" readonly value="Doha">
+                                    @break
+                                @case("Riyadh")
+                                    <input type="text" placeholder="" readonly value="Riyadh">
+                                    @break
+                                @case("Dubai")
+                                    <input type="text" placeholder="" readonly value="Dubai">
+                                    @break
+                                @case("Jeddah")
+                                    <input type="text" placeholder="" readonly value="Jeddah">
+                                    @break
+                                @default
+                                <input type="text" placeholder="" readonly value="">
+                            @endswitch
+
                         </div>
                         <!-- start input -->
                         <div class="par_input">
