@@ -1,0 +1,128 @@
+@media all and (max-width: 1310px) {
+  html {
+    overflow: hidden;
+  }
+
+  .page_background {
+    display: none;
+  }
+
+  .box {
+    width: 100%;
+    background: transparent;
+    top: 0;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+    height: 100vh;
+  }
+  .box .background_box {
+    height: calc(100vh + 5px);
+    top: 0;
+    bottom: auto;
+    left: auto;
+    right: 0;
+    width: 100%;
+  }
+  .box .background_box svg {
+    height: 100%;
+    position: absolute;
+    right: 0;
+  }
+  .box .content {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .shadow {
+    display: none;
+  }
+
+  .overlap {
+    display: none;
+  }
+
+  .copyright {
+    z-index: 5;
+    bottom: 48px;
+  }
+}
+@media all and (max-width: 971px) {
+  .box .social {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+  .box .social a:last-child {
+    margin-right: 0;
+  }
+
+  .copyright {
+    bottom: 18px;
+    width: 100%;
+    text-align: center;
+  }
+}
+@media all and (max-width: 660px) {
+  .box .content {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media all and (max-width: 480px) {
+  .box {
+    width: 100%;
+  }
+  .box .background_box {
+    display: none;
+  }
+  .box .logo_container {
+    right: 40px;
+    top: 40px;
+  }
+  .box .logo_container .logo {
+    transform: none;
+    right: 0;
+    top: 0;
+    left: auto;
+  }
+  .box .logo_container .box_of_logo {
+    display: none;
+  }
+  .box .content {
+    position: absolute;
+    margin: auto;
+    display: block;
+    width: 100%;
+    padding: 0 40px;
+  }
+  .box .content .form {
+    width: 100%;
+  }
+  .box .content .paragraph {
+    width: 100%;
+  }
+  .box .social {
+    right: 40px;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    bottom: 45px;
+  }
+  .box .social .icon path {
+    color: #2C2355;
+  }
+  .box .social .icon:hover path {
+    color: #2c2355ba;
+  }
+}
+@media all and (max-width: 390px) {
+  .social {
+    bottom: 65px !important;
+  }
+}
+
+/*# sourceMappingURL=responsive.css.map */
