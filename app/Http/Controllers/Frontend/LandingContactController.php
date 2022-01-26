@@ -120,7 +120,7 @@ class LandingContactController extends Controller
 
     public function thank($type)
     {
-        $landingData = LandingPageData::where("type", $type)->first(["thanks_title", "thanks_paragraph"]);
+        $landingData = LandingPageData::where("type", $type)->first();
         return view('landing pages.thank', [
             'landingData' => $landingData
         ]);
